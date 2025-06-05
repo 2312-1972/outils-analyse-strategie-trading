@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard d'Analyse pour Stratégie de Trading</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Dashboard d'Analyse Stratégique</h1>
+                    <p class="text-sm text-gray-500">Aide à la décision pour le portefeuille CAC 40</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm font-medium">Action :</span>
+                    <select id="stockSelector" class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <section id="context" class="mb-12">
+            <h2 class="text-xl font-semibold text-gray-700 section-title">Contexte Actuel du Marché</h2>
+            <p class="text-gray-600 mb-6">L'environnement d'investissement actuel est façonné par plusieurs facteurs macroéconomiques clés. Notre stratégie doit s'adapter à cette dynamique pour identifier les opportunités et gérer les risques.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-5 rounded-lg shadow metric-card">
+                    <h3 class="font-semibold text-lg">Volatilité Élevée</h3>
+                    <p class="text-gray-600 text-sm mt-1">Les indices montrent des fluctuations importantes, nécessitant une gestion du risque active.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow metric-card">
+                    <h3 class="font-semibold text-lg">Hausse des Taux</h3>
+                    <p class="text-gray-600 text-sm mt-1">Les taux d'intérêt en augmentation impactent la valorisation, surtout pour les valeurs de croissance.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow metric-card">
+                    <h3 class="font-semibold text-lg">Pression Inflationniste</h3>
+                    <p class="text-gray-600 text-sm mt-1">L'inflation influence les coûts des entreprises et le pouvoir d'achat des consommateurs.</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg shadow metric-card">
+                    <h3 class="font-semibold text-lg">Rotation Sectorielle</h3>
+                    <p class="text-gray-600 text-sm mt-1">La tech sous-performe tandis que l'énergie et les biens de base montrent de la résilience.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pipeline" class="mb-12">
+            <h2 class="text-xl font-semibold text-gray-700 section-title">Pipeline de Traitement des Données</h2>
+             <p class="text-gray-600 mb-6">Pour garantir la fiabilité de notre modèle, nous suivons un processus rigoureux en trois étapes, de la collecte des données brutes au calcul d'indicateurs financiers pertinents. Ce pipeline assure la qualité et la cohérence de l'information utilisée pour l'analyse.</p>
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+                <div class="pipeline-step md:col-span-1">
+                    <h3 class="font-semibold">1. Collecte</h3>
+                    <p class="text-sm text-gray-500">Données OHLCV via API (`yfinance`)</p>
+                </div>
+                <div class="pipeline-arrow hidden md:flex">→</div>
+                <div class="pipeline-step md:col-span-2">
+                    <h3 class="font-semibold">2. Nettoyage & Préparation</h3>
+                    <p class="text-sm text-gray-500">Gestion des NaN, ajustement des prix, calcul des rendements</p>
+                </div>
+                <div class="pipeline-arrow hidden md:flex">→</div>
+                <div class="pipeline-step md:col-span-1">
+                    <h3 class="font-semibold">3. Indicateurs</h3>
+                    <p class="text-sm text-gray-500">Calcul des MAs, RSI, MACD, etc.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="analysis" class="mb-12">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 id="chartTitle" class="text-xl font-semibold text-gray-700">Analyse de l'Action</h2>
+                        <div>
+                            <button id="toggleSma20" class="text-sm px-3 py-1 rounded-full border border-gray-300">SMA 20</button>
+                            <button id="toggleSma50" class="text-sm px-3 py-1 rounded-full border border-gray-300 ml-2">SMA 50</button>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-6">Le graphique ci-dessous présente l'évolution du cours de l'action sélectionnée. Vous pouvez superposer les moyennes mobiles à 20 et 50 jours pour identifier les tendances à court et moyen terme.</p>
+                    <div class="chart-container">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="space-y-8">
+                    <div id="predictionCard" class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="font-semibold text-lg text-gray-700 mb-2">Signal du Modèle</h3>
+                        <div class="text-center">
+                            <p id="predictionSignal" class="text-3xl font-bold"></p>
+                            <p id="predictionProba" class="text-sm text-gray-500"></p>
+                        </div>
+                         <p class="text-xs text-gray-500 mt-4">Ce signal est une prédiction simulée de la direction du cours pour le jour suivant, basée sur notre modèle quantitatif. Il ne constitue pas une recommandation d'investissement formelle.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow">
+                        <h3 class="font-semibold text-gray-700 mb-2">Indicateur RSI (14j)</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Le RSI mesure l'ampleur des variations de cours récentes pour évaluer les conditions de surachat (au-dessus de 70) ou de survente (en dessous de 30).</p>
+                        <div class="small-chart-container">
+                            <canvas id="rsiChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="model" class="mb-12">
+            <h2 class="text-xl font-semibold text-gray-700 section-title">Performance & Évaluation du Modèle</h2>
+             <p class="text-gray-600 mb-6">La crédibilité de nos prédictions repose sur un modèle robuste et rigoureusement évalué. Nous utilisons un modèle de classification (XGBoost) et mesurons sa performance sur des données historiques non vues lors de son entraînement. Cela nous permet de quantifier sa capacité à discriminer correctement les futures hausses et baisses.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg mb-4">Matrice de Confusion (Simulée)</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Ce tableau croise les prédictions du modèle avec les résultats réels. Il montre combien de hausses et de baisses ont été correctement identifiées.</p>
+                    <table class="w-full text-center">
+                        <thead>
+                            <tr class="bg-gray-50">
+                                <th class="p-2 font-medium text-sm"></th>
+                                <th class="p-2 font-medium text-sm border-l border-b">Prédit : Hausse</th>
+                                <th class="p-2 font-medium text-sm border-l border-b">Prédit : Baisse</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-2 font-medium text-sm border-r">Réel : Hausse</td>
+                                <td id="confMatTP" class="p-2 bg-green-100 text-green-800 font-semibold"></td>
+                                <td id="confMatFN" class="p-2 bg-red-50 text-red-800"></td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 font-medium text-sm border-r">Réel : Baisse</td>
+                                <td id="confMatFP" class="p-2 bg-red-50 text-red-800"></td>
+                                <td id="confMatTN" class="p-2 bg-green-100 text-green-800 font-semibold"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="font-semibold text-lg mb-4">Indicateurs de Performance (Simulés)</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Ces métriques quantifient la performance globale du modèle sur l'ensemble de test.</p>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Précision (Accuracy)</span>
+                            <span id="metricAccuracy" class="font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full text-sm"></span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">Score F1</span>
+                            <span id="metricF1" class="font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full text-sm"></span>
+                        </li>
+                        <li class="flex justify-between items-center">
+                            <span class="text-gray-700">AUC (Courbe ROC)</span>
+                            <span id="metricAuc" class="font-semibold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full text-sm"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="recommendation">
+             <h2 class="text-xl font-semibold text-gray-700 section-title">Synthèse et Recommandation</h2>
+             <p id="recommendationText" class="text-gray-700 bg-white p-6 rounded-lg shadow-md leading-relaxed text-lg"></p>
+        </section>
+    </main>
+    
+    <footer class="bg-white mt-12">
+        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+            <p>Ce dashboard est un outil d'aide à la décision basé sur une modélisation quantitative. Les informations sont fournies à titre indicatif et ne constituent pas des conseils en investissement.</p>
+        </div>
+    </footer>
+</body>
+</html>
