@@ -1,5 +1,5 @@
 # outils-analyse-strategie-trading.
-Exemple d'un outils pour suivre et analyser les marchés financiers et fournir des recommandations d'investissement.
+Outil pour suivre et analyser les marchés financiers et fournir des recommandations d'investissement.
 
 Données analysées :
 
