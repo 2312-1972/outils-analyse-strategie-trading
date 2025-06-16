@@ -3,6 +3,11 @@ body {
             background-color: #f8f7f4;
             color: #1a202c;
         }
+  main{
+        background: linear-gradient(to bottom, #61dafb, #0a2f5c);
+        text-align: center;
+
+  }      
         .chart-container {
             position: relative;
             width: 100%;
@@ -20,7 +25,7 @@ body {
         }
         .nav-button:hover {
             background-color: #e2e8f0;
-            color: #2d3748;
+            color: #0c0c0c;
         }
         .nav-button.active {
             background-color: #3b82f6;
@@ -28,7 +33,7 @@ body {
             font-weight: 600;
         }
         .metric-card {
-            border-left: 4px solid #3b82f6;
+            border-bottom: 4px solid #3b82f6;
         }
         .prediction-buy {
             border-left-color: #22c55e;
@@ -62,3 +67,50 @@ body {
             font-size: 2rem;
             color: #94a3b8;
         }    
+        .cta-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    color: #0ea5e9; /* Bleu cobalt */
+    border: 2px solid transparent;
+    background-color: #ffffff;
+    border-radius: 9999px; /* full rounded */
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.cta-button::before {
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(270deg, #0ea5e9, #f3f3f5, #0ea5e9);
+    background-size: 600% 600%;
+    border-radius: inherit;
+    z-index: -1;
+    animation: borderMove 3s linear infinite;
+}
+
+.cta-button:hover {
+    transform: scale(1.2);
+}
+
+@keyframes borderMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+ .disclaimer-text{
+    text-align: center;
+    padding-top: 30px;
+   margin-bottom: 30px;
+ }

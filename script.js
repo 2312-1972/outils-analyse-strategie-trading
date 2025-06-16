@@ -259,13 +259,16 @@ document.addEventListener('DOMContentLoaded', function () {
         
         switch(signal) {
             case 'ACHAT':
-                text += `Cette recommandation est soutenue par des indicateurs techniques favorables. Compte tenu du contexte de rotation sectorielle, les actions du secteur **${stock.sector}** montrent un potentiel intéressant. Une approche d'achat prudent est conseillée.`;
+                text += `Cette recommandation est soutenue par des indicateurs techniques favorables. Compte tenu du contexte de rotation sectorielle, les actions du secteur
+                 **${stock.sector}** montrent un potentiel intéressant. Une approche d'achat prudent est conseillée.`;
                 break;
             case 'VENTE':
-                 text += `Ce signal suggère une potentielle pression à la baisse. Pour le secteur **${stock.sector}**, cela pourrait être lié à sa sensibilité aux taux d'intérêt ou à un ralentissement du momentum. Une surveillance accrue est recommandée.`;
+                 text += `Ce signal suggère une potentielle pression à la baisse. Pour le secteur **${stock.sector}**, cela pourrait être lié à sa sensibilité aux taux 
+                 d'intérêt ou à un ralentissement du momentum. Une surveillance accrue est recommandée.`;
                  break;
             case 'CONSERVER':
-                 text += `Le signal neutre indique un équilibre entre les forces acheteuses et vendeuses. Il n'y a pas de conviction forte pour un mouvement directionnel à court terme. La position actuelle peut être maintenue en attendant une plus grande clarté.`;
+                 text += `Le signal neutre indique un équilibre entre les forces acheteuses et vendeuses. Il n'y a pas de conviction forte pour un mouvement directionnel 
+                 à court terme. La position actuelle peut être maintenue en attendant une plus grande clarté.`;
                  break;
         }
         recoText.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-blue-600">$1</strong>');
