@@ -1,4 +1,3 @@
-/* From Uiverse.io by vinodjangid07 */ 
 .button {
   width: 50px;
   height: 50px;
@@ -11,47 +10,37 @@
   justify-content: center;
   box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
   cursor: pointer;
-  transition-duration: 0.3s;
+  transition: width 0.3s, border-radius 0.3s, background-color 0.3s;
   overflow: hidden;
   position: relative;
 }
 
-.svgIcon {
-  width: 12px;
-  transition-duration: 0.3s;
-}
-
-.svgIcon path {
-  fill: white;
+.icon {
+  font-size: 16px;
+  color: white;
+  transition: transform 0.3s;
 }
 
 .button:hover {
   width: 140px;
   border-radius: 50px;
-  transition-duration: 0.3s;
-  background-color: rgb(181, 160, 255);
-  align-items: center;
+  background-color: rgb(79, 173, 236);
 }
 
-.button:hover .svgIcon {
-  /* width: 20px; */
-  transition-duration: 0.3s;
+.button:hover .icon {
   transform: translateY(-200%);
 }
 
 .button::before {
-  position: absolute;
-  bottom: -20px;
   content: "Back to Top";
+  position: absolute;
   color: white;
-  /* transition-duration: .3s; */
   font-size: 0px;
+  transition: font-size 0.3s, opacity 0.3s;
+  opacity: 0;
 }
 
 .button:hover::before {
   font-size: 13px;
   opacity: 1;
-  bottom: unset;
-  /* transform: translateY(-30px); */
-  transition-duration: 0.3s;
 }
