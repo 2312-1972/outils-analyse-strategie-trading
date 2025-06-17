@@ -1,6 +1,8 @@
 # outils-analyse-strategie-trading.
 Outil pour suivre et analyser les marchés financiers et fournir des recommandations d'investissement.
 
+[![Présentation de l'app](https://img.https://youtu.be/ibmOc5MoNUU)](https://youtu.be/ibmOc5MoNUU)
+
 Données analysées :
 
 ·           Les indices boursiers ont récemment montré une forte volatilité.
