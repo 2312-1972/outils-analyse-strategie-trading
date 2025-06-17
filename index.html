@@ -29,8 +29,8 @@
         </div>
       </div>
     <div class="flex items-center space-x-4">
-        <span class="text-sm font-medium">Action :</span>
-        <select id="stockSelector" class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+        <span class="text-sm font-medium ">Action :</span>
+        <select id="stockSelector" class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-black">
         </select>
       </div>
     </div>
@@ -38,7 +38,7 @@
 </header>
 <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <section id="context" class="mb-12">
-            <h2 class="text-xl font-semibold text-white-700 section-title">Contexte Actuel du Marché</h2>
+            <h2 class="text-xl font-semibold text-white section-title">Contexte Actuel du Marché</h2>
             <p style="color: white;padding-top: 5px;padding-bottom: 15px">L'environnement d'investissement actuel est façonné par plusieurs facteurs macroéconomiques clés. Notre stratégie doit s'adapter à cette dynamique pour identifier les opportunités et gérer les risques.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white p-5 rounded-lg shadow metric-card">
@@ -60,19 +60,19 @@
             </div>
         </section>
     <section id="pipeline" class="mb-12">
-            <h2 class="text-xl font-semibold text-white-700 section-title">Pipeline de Traitement des Données</h2>
+            <h2 class="text-xl font-semibold text-white section-title">Pipeline de Traitement des Données</h2>
              <p style="color: white;padding-top: 5px;padding-bottom: 15px;">Pour garantir la fiabilité de notre modèle, nous suivons un processus rigoureux en trois étapes, de la collecte des données brutes au calcul d'indicateurs financiers pertinents. Ce pipeline assure la qualité et la cohérence de l'information utilisée pour l'analyse.</p>
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-5 items-center">
                 <div class="pipeline-step md:col-span-1">
                     <h3 class="font-semibold">1. Collecte</h3>
                     <p class="text-sm text-gray-500">Données OHLCV via API (`yfinance`)</p>
                 </div>
-                <div class="pipeline-arrow hidden md:flex">→</div>
+                <div class="pipeline-arrow hidden md:flex text-white">→</div>
                 <div class="pipeline-step md:col-span-2">
                     <h3 class="font-semibold">2. Nettoyage & Préparation</h3>
                     <p class="text-sm text-gray-500">Gestion des NaN, ajustement des prix, calcul des rendements</p>
                 </div>
-                <div class="pipeline-arrow hidden md:flex">→</div>
+                <div class="pipeline-arrow hidden md:flex text-white">→</div>
                 <div class="pipeline-step md:col-span-1">
                     <h3 class="font-semibold">3. Indicateurs</h3>
                     <p class="text-sm text-gray-500">Calcul des MAs, RSI, MACD, etc.</p>
