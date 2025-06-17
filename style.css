@@ -97,7 +97,10 @@
             50% { transform: translateX(20px); }
             100% { transform: translateX(0); }
             }
-
+.analytic-button{
+    border: 1px solid rgb(246, 246, 250);
+    
+}
         .cta-button {
             position: relative;
             overflow: hidden;
