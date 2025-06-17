@@ -16,27 +16,29 @@
     <script src="script.js"></script>
 </head>
 <body class="antialiased">
-
-    <header class="bg-blue-200 shadow-sm sticky top-0 z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div class="flex items-center justify-between">
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-800">Dashboard d'Analyse Stratégique</h1>
-                    <p class="text-sm text-gray-500">Aide à la décision pour le portefeuille CAC 40</p>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <span class="text-sm font-medium">Action :</span>
-                    <select id="stockSelector" class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                    </select>
-                </div>
-            </div>
+<header class="shadow-sm sticky top-0 z-10">
+  <div class=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <a href="https://portfolio-frederic-toppan.vercel.app/" target="_blank" rel="noopener noreferrer">
+       <img src="Public/assets/img/Shenzor.665b7cdd5c7bb9ab5b85.webp" alt="Logo" class="logo" />
+       </a>
+        <div>
+          <h1 class="text-2xl font-bold text-white-800">Dashboard d'Analyse Stratégique</h1>
+          <p class="text-sm text-white-500">Aide à la décision pour le portefeuille CAC 40</p>
         </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-
-        <section id="context" class="mb-12">
-            <h2 class="text-xl font-semibold text-gray-700 section-title">Contexte Actuel du Marché</h2>
+      </div>
+    <div class="flex items-center space-x-4">
+        <span class="text-sm font-medium">Action :</span>
+        <select id="stockSelector" class="rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+        </select>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <section id="context" class="mb-12">
+            <h2 class="text-xl font-semibold text-white-700 section-title">Contexte Actuel du Marché</h2>
             <p style="color: white;padding-top: 5px;padding-bottom: 15px">L'environnement d'investissement actuel est façonné par plusieurs facteurs macroéconomiques clés. Notre stratégie doit s'adapter à cette dynamique pour identifier les opportunités et gérer les risques.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white p-5 rounded-lg shadow metric-card">
@@ -57,9 +59,8 @@
                 </div>
             </div>
         </section>
-
-        <section id="pipeline" class="mb-12">
-            <h2 class="text-xl font-semibold text-gray-700 section-title">Pipeline de Traitement des Données</h2>
+    <section id="pipeline" class="mb-12">
+            <h2 class="text-xl font-semibold text-white-700 section-title">Pipeline de Traitement des Données</h2>
              <p style="color: white;padding-top: 5px;padding-bottom: 15px;">Pour garantir la fiabilité de notre modèle, nous suivons un processus rigoureux en trois étapes, de la collecte des données brutes au calcul d'indicateurs financiers pertinents. Ce pipeline assure la qualité et la cohérence de l'information utilisée pour l'analyse.</p>
             <div class="grid grid-cols-1 md:grid-cols-5 gap-4 items-center">
                 <div class="pipeline-step md:col-span-1">
@@ -78,8 +79,7 @@
                 </div>
             </div>
         </section>
-
-        <section id="analysis" class="mb-12">
+    <section id="analysis" class="mb-12">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2 bg-white p-6 rounded-lg shadow">
                     <div class="flex justify-between items-center mb-4">
@@ -95,8 +95,7 @@
                         <canvas id="priceChart"></canvas>
                     </div>
                 </div>
-
-                <div class="space-y-8">
+            <div class="space-y-8">
                     <div id="predictionCard" class="bg-white p-6 rounded-lg shadow">
                         <h3 class="font-semibold text-lg text-gray-700 mb-2">Signal du Modèle</h3>
                         <div class="text-center">
@@ -171,12 +170,9 @@
              <h2 class="text-xl font-semibold text-white section-title">Synthèse et Recommandation</h2>
              <p id="recommendationText" class="text-gray-700 bg-white p-6 rounded-lg shadow-md leading-relaxed text-lg"></p>
         </section>
-        
-        </main>
-    
-
-    <footer class="bg-blue-200 mt-12">
-        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+    </main>
+<footer class=" mt-12">
+        <div class=" max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
             <button class="btn-cssbuttons">
              <span>Join Me</span>
                 <ul>
@@ -208,31 +204,5 @@
 <button id="backToTopBtn" class="button" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 999;">
   <i class="fa-solid fa-arrow-up icon"></i>
 </button>
-
-<script>
-  const backToTopBtn = document.getElementById('backToTopBtn');
-
-  // Cacher le bouton au chargement
-  backToTopBtn.style.display = 'none';
-
-  // Afficher / Cacher le bouton selon le scroll
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      backToTopBtn.style.display = 'flex';
-    } else {
-      backToTopBtn.style.display = 'none';
-    }
-  });
-
-  // Remonter en haut de la page au clic
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-</script>
-
-
 </body>
 </html>

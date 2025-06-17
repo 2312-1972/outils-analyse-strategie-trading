@@ -1,13 +1,15 @@
-body {
+        body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8f7f4;
             color: #1a202c;
+            background: linear-gradient(to right, #0d0d2b, #2c74ff, #89cff0);
+            height: 100vh;
+            margin: 0;
         }
-  main{
-        background: linear-gradient(to bottom, #61dafb, #0a2f5c);
+        main{
+       
         text-align: center;
 
-  }      
+        }      
         .chart-container {
             position: relative;
             width: 100%;
@@ -19,6 +21,25 @@ body {
             width: 100%;
             height: 200px;
             max-height: 25vh;
+        }
+
+        .logo{
+            background-color: #070707;
+            height: 200px;
+            border-radius: 50%;
+            border: 1px solid #e0e0e0;
+            
+
+
+        }
+
+        header{
+            background: linear-gradient(to right, #02041a, #0d326e);
+            color: #e0e0e0;
+            border-bottom: 2px solid #3a7cfd; 
+            box-shadow: 0px 2px 10px -2px #3a7cfd;
+            padding: 20px;
+            text-align: center;
         }
         .nav-button {
             transition: all 0.3s ease;
@@ -71,13 +92,14 @@ body {
     position: relative;
     overflow: hidden;
     z-index: 0;
-    color: #0ea5e9; /* Bleu cobalt */
+    color: #0ea5e9; 
     border: 2px solid transparent;
     background-color: #ffffff;
-    border-radius: 9999px; /* full rounded */
+    border-radius: 9999px; 
     padding: 0.5rem 1rem;
     font-weight: 600;
     transition: transform 0.3s ease;
+    border: 1px solid rgb(12, 8, 245);
 }
 
 .cta-button::before {
@@ -113,4 +135,5 @@ body {
     text-align: center;
     padding-top: 30px;
    margin-bottom: 30px;
+   color: white;
  }
